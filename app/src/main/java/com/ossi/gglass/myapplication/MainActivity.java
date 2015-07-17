@@ -46,7 +46,6 @@ import java.nio.ByteOrder;
  */
 public class MainActivity extends Activity implements ViewSwitcher.ViewFactory, View.OnClickListener{
 
-//    TextView text;
     private TextSwitcher mSwitcher1, mSwitcher2;
 
     @Override
@@ -59,50 +58,41 @@ public class MainActivity extends Activity implements ViewSwitcher.ViewFactory, 
         Log.i("setContentView", " ");
 
         mSwitcher1 = (TextSwitcher) findViewById(R.id.switcher1);
-//        mSwitcher2 = (TextSwitcher) findViewById(R.id.switcher2);
-        mSwitcher1.setFactory(this);
-        mSwitcher1.setText("there is some text here.");
-//        mSwitcher2.setFactory(this);
+        mSwitcher2 = (TextSwitcher) findViewById(R.id.switcher2);
 
-//        mSwitcher1.setFactory(new ViewSwitcher.ViewFactory() {
-////            @Override
-//            public View makeView() {
-//                TextView tv = new TextView(MainActivity.this);
-//                tv.setTextSize(20);
-//                Log.i("mS1 makeView()"," ");
-//                return tv;
-//            }
-//        });
-//        mSwitcher2.setFactory(new ViewSwitcher.ViewFactory() {
-////            @Override
-//            public View makeView() {
-//                TextView tv = new TextView(MainActivity.this);
-//                tv.setTextSize(20);
-//                Log.i("mS2 makeView()", " ");
-//                return tv;
-//            }
-//        });
+        mSwitcher1.setFactory(new ViewSwitcher.ViewFactory() {
+            public View makeView() {
+                TextView tv = new TextView(MainActivity.this);
+                tv.setTextSize(20);
+                Log.i("mS1 makeView()"," ");
+                return tv;
+            }
+        });
+        mSwitcher2.setFactory(new ViewSwitcher.ViewFactory() {
+            public View makeView() {
+                TextView tv = new TextView(MainActivity.this);
+                tv.setTextSize(20);
+                Log.i("mS2 makeView()", " ");
+                return tv;
+            }
+        });
+
+        mSwitcher1.setText("there is some text here.");
+        mSwitcher2.setText("and here too, hopefully.");
+
         Log.i("mS.setFactory"," ");
 
     }
 
     @Override
     protected void onResume() {
-//        Log.i("onResume"," ");
         super.onResume();
-        //        mCardScroller.activate();
     }
 
     @Override
     protected void onPause() {
-//        mCardScroller.deactivate();
-//        Log.i("onPause"," ");
         super.onPause();
     }
-
-//    private void updateResults(){
-//        mSwitcher.setText();
-//    }
 
     public View makeView() {
         TextView t = new TextView(this);
@@ -162,7 +152,7 @@ public class MainActivity extends Activity implements ViewSwitcher.ViewFactory, 
                                     Log.i("Joint 7", jointStringArray[6]);
 
                                     mSwitcher1.setText(jointStringArray[0]);
-//                                    mSwitcher2.setText(jointStringArray[1]);
+                                    mSwitcher2.setText(jointStringArray[1]);
 
                                 }
                             });
